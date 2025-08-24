@@ -19,58 +19,80 @@ Site pour Luvo Charging
     .glass { background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); }
     .gradient { background: radial-gradient(1000px 600px at 10% 10%, rgba(14,165,233,.12), transparent), radial-gradient(800px 400px at 90% 20%, rgba(14,165,233,.18), transparent); }
     .lang-btn{padding:.375rem .625rem;border-radius:.75rem;border:1px solid rgb(203 213 225);font-size:.875rem}
-    .lang-active{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .lang-btn:hover {border-color: rgba(0,121,30,0.8); color: rgba(0,121,30,1); box-shadow: 0 0 8px rgba(0,121,30,0.25);}
+      .lang-active{background:rgba(0,121,30,1);color:#fff;border-color:rgba(0,121,30,1)}
+    .select-dark{appearance:none; -webkit-appearance:none; -moz-appearance:none; background-color: rgba(255,255,255,.05); color:#fff; border:1px solid rgba(255,255,255,.10); padding-right:2.5rem; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg>'); background-repeat:no-repeat; background-position: right .75rem center; background-size: 1rem;}
+    .select-dark:focus{outline:0; box-shadow:0 0 0 2px rgba(0,121,30,1); border-color: transparent;}
+    .select-dark option{background-color: rgba(16,24,40,.98); color:#fff;}
+    @supports (-webkit-touch-callout: none) {.select-dark option { color: #fff; }
+  }
+
     [id]{scroll-margin-top:var(--header-h);}
     @media (min-width: 768px) { :root { --header-h: 112px; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 gradient">
-  <!-- Header -->
-  <header style="background-color: rgba(255,255,255,1);" class="sticky top-0 z-50 shadow">
-    <div class="container mx-auto px-1 py-2 flex items-center justify-between">
-      <!-- Logo -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <img src="assets/logo-luvo.jpg" alt="Logo de Luvo Charging" class="h-9 sm:h-10 md:h-12 lg:h-20 w-auto"/>
-      </div>
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow bg-white">
+  <div class="container mx-auto px-2 py-2 flex items-center justify-between">
 
-      <!-- Menu mobile (optionnel) -->
-      <button class="md:hidden p-2 rounded-lg border border-slate-300" aria-label="Menu">☰</button>
+    <!-- Logo -->
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="flex items-center gap-2">
+      <img src="assets/logo-luvo.jpg" alt="Luvo Charging" class="h-10 w-auto md:h-12">
+      <span class="sr-only">Luvo Charging</span>
+    </a>
 
-      <!-- Navigation + Lang -->
-      <nav class="relative hidden md:flex items-center gap-5 text-sm">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"
-           class="relative px-3 py-2 text-slate-700 transition-colors group" aria-label="Accueil">
-          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-          <span class="relative z-10 group-hover:text-white" data-i18n="nav.home">Accueil</span>
-        </a>
-        <a href="#features" class="relative px-3 py-2 text-slate-700 transition-colors group">
-          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-          <span class="relative z-10 group-hover:text-white" data-i18n="nav.features">Avantages</span>
-        </a>
-        <a href="#how" class="relative px-3 py-2 text-slate-700 transition-colors group">
-          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-          <span class="relative z-10 group-hover:text-white" data-i18n="nav.how">Fonctionnement</span>
-        </a>
-        <a href="#pricing" class="relative px-3 py-2 text-slate-700 transition-colors group">
-          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-          <span class="relative z-10 group-hover:text-white" data-i18n="nav.pricing">Revenus</span>
-        </a>
-        <a href="#faq" class="relative px-3 py-2 text-slate-700 transition-colors group">
-          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-          <span class="relative z-10 group-hover:text-white" data-i18n="nav.faq">FAQ</span>
-        </a>
-        <a href="#contact" class="relative px-3 py-2 rounded-xl bg-[rgba(0,121,30,1)] text-white hover:bg-[rgba(0,121,30,1)]" data-i18n="nav.cta">
-          Devenir hôte
-        </a>
-
-        <!-- Switch FR/EN -->
-        <div class="ml-3 flex gap-2">
-          <button id="lang-fr" class="lang-btn lang-active">FR</button>
-          <button id="lang-en" class="lang-btn">EN</button>
-        </div>
-      </nav>
+    <!-- Boutons langue (desktop) -->
+    <div class="hidden md:flex items-center gap-2">
+      <button type="button" class="lang-btn" data-lang="fr">FR</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
     </div>
-  </header>
+
+    <!-- Nav desktop -->
+    <nav class="hidden md:flex items-center gap-5 text-sm">
+      <a href="#features" class="relative px-3 py-2 text-slate-700 group">
+        <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        <span class="relative z-10 group-hover:text-white">Avantages</span>
+      </a>
+      <a href="#how" class="relative px-3 py-2 text-slate-700 group">
+        <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        <span class="relative z-10 group-hover:text-white">Fonctionnement</span>
+      </a>
+      <a href="#pricing" class="relative px-3 py-2 text-slate-700 group">
+        <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        <span class="relative z-10 group-hover:text-white">Revenus</span>
+      </a>
+      <a href="#faq" class="relative px-3 py-2 text-slate-700 group">
+        <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        <span class="relative z-10 group-hover:text-white">FAQ</span>
+      </a>
+      <a href="#contact" class="px-3 py-2 rounded-xl bg-[rgba(0,121,30,1)] text-white">Devenir hôte</a>
+    </nav>
+
+    <!-- Bouton menu mobile -->
+    <button id="menu-btn" class="md:hidden p-2 rounded-lg border border-slate-300" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu">
+      ☰
+    </button>
+  </div>
+
+  <!-- Panneau mobile -->
+  <div id="mobile-nav" class="md:hidden hidden border-t border-slate-200 bg-white">
+    <div class="container mx-auto px-2 py-3 space-y-2">
+      <a href="#features" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-[rgba(0,121,30,0.08)] nav-link">Avantages</a>
+      <a href="#how" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-[rgba(0,121,30,0.08)] nav-link">Fonctionnement</a>
+      <a href="#pricing" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-[rgba(0,121,30,0.08)] nav-link">Revenus</a>
+      <a href="#faq" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-[rgba(0,121,30,0.08)] nav-link">FAQ</a>
+      <a href="#contact" class="block px-3 py-2 rounded-lg bg-[rgba(0,121,30,1)] text-white nav-link">Devenir hôte</a>
+
+      <!-- FR/EN dans le menu mobile -->
+      <div class="pt-2 flex items-center gap-2">
+        <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
 
   <!-- Hero -->
   <section class="container mx-auto px-4 pt-40 pb-40 flex items-center justify-center">
@@ -152,7 +174,7 @@ Site pour Luvo Charging
       <!-- Feature 2 -->
       <div class="p-8 bg-[rgba(16,24,40,0.95)]/90 rounded-2xl shadow-lg text-center text-white transition-transform duration-200 hover:scale-105">
         <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
-          <img width="30" height="30" src="https://img.icons8.com/material-outlined/24/FFFFFF/us-dollar--v1.png" alt="icône dollar"/>
+          <img width="30" height="30" src="assets/icone-dollar.png" alt="Icône Dollar"/>
         </div>
         <h3 class="text-xl font-bold" data-i18n="features.2.t">Revenus additionnels</h3>
         <p class="mt-3 text-slate-100/90" data-i18n="features.2.d">Touchez une commission fixe sur chaque location. Paiement mensuel clair et transparent.</p>
@@ -185,7 +207,7 @@ Site pour Luvo Charging
         <!-- Step 1 -->
         <div class="flex flex-col items-center">
           <div class="w-24 h-24 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center shadow-md transition-transform duration-200 hover:scale-105">
-            <img width="48" height="48" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/new-post.png" alt="icône message"/>
+            <img width="48" height="48" src="assets/icone-message.png" alt="Icône de message"/>
           </div>
           <h3 class="mt-6 text-2xl font-extrabold text-white" data-i18n="how.s1.t">Étape 1 <br>Contactez-nous</h3>
           <p class="mt-2 text-slate-300/90" data-i18n="how.s1.d">Formulaire ou courriel pour nous faire part de votre intérêt.</p>
@@ -193,7 +215,7 @@ Site pour Luvo Charging
         <!-- Step 2 -->
         <div class="flex flex-col items-center">
           <div class="w-24 h-24 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center shadow-md transition-transform duration-200 hover:scale-105">
-            <img width="48" height="48" src="https://img.icons8.com/glyph-neue/64/FFFFFF/handshake.png" alt="icône poignée de main"/>
+            <img width="48" height="48" src="assets/icone-poignee.png" alt="Icône de poignée"/>
           </div>
           <h3 class="mt-6 text-2xl font-extrabold text-white" data-i18n="how.s2.t">Étape 2 <br> Approbation</h3>
           <p class="mt-2 text-slate-300/90" data-i18n="how.s2.d">Nous validons l’emplacement et confirmons les détails du partenariat.</p>
@@ -350,93 +372,151 @@ Site pour Luvo Charging
     </div>
   </section>
 
-  <!-- Contact / Devenir hôte (compact) -->
-  <section id="contact" class="container mx-auto px-4 mt-12 pb-20 scroll-mt-24">
-    <div class="max-w-xl mx-auto">
-      <div class="rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-6 md:p-7 shadow-lg border border-[rgba(0,121,30,0.35)]">
-        <h4 class="text-xl font-bold" data-i18n="contact.title">Devenir hôte</h4>
-        <p class="mt-1.5 text-slate-300/90 text-sm" data-i18n="contact.lead">Remplissez ce formulaire — réponse sous 24&nbsp;h ouvrables.</p>
+<!-- Contact / Devenir hôte (compact) -->
+<section id="contact" class="container mx-auto px-4 mt-12 pb-20 scroll-mt-24">
+  <div class="max-w-xl mx-auto">
+    <div class="rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-6 md:p-7 shadow-lg border border-[rgba(0,121,30,0.35)]">
+      <h4 class="text-xl font-bold" data-i18n="contact.title">Devenir hôte</h4>
+      <p class="mt-1.5 text-slate-300/90 text-sm" data-i18n="contact.lead">Remplissez ce formulaire — réponse sous 24&nbsp;h ouvrables.</p>
 
-        <form class="mt-5 space-y-4" action="https://formspree.io/f/your-id" method="POST">
+      <form id="host-form" class="mt-5 space-y-4" action="https://formspree.io/f/xyzdgpew" method="POST">
+        <!-- Sujet (facilite le tri côté email Formspree) -->
+        <input type="hidden" name="_subject" value="Nouvelle demande — Luvo Charging" />
+        <!-- Honeypot anti-bot (laisser caché) -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <div>
+          <label class="block text-sm mb-1" data-i18n="form.business">Nom de l’établissement</label>
+          <input name="business_name" required
+            class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm mb-1" data-i18n="form.business">Nom de l’établissement</label>
-            <input name="business_name" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                       focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+            <label class="block text-sm mb-1" data-i18n="form.last">Nom</label>
+            <input name="last_name" required
+              class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                     focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm mb-1" data-i18n="form.last">Nom</label>
-              <input name="last_name" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
-            </div>
-            <div>
-              <label class="block text-sm mb-1" data-i18n="form.first">Prénom</label>
-              <input name="first_name" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm mb-1" data-i18n="form.email">Courriel</label>
-              <input type="email" name="email" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
-            </div>
-            <div>
-              <label class="block text-sm mb-1" data-i18n="form.phone">Téléphone</label>
-              <input name="phone" class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
-            </div>
-          </div>
-
           <div>
-            <label class="block text-sm mb-1" data-i18n="form.address">Adresse de l’établissement</label>
-            <input name="address" class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                       focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+            <label class="block text-sm mb-1" data-i18n="form.first">Prénom</label>
+            <input name="first_name" required
+              class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                     focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
           </div>
+        </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm mb-1" data-i18n="form.type">Type d’établissement</label>
-            <select name="business_type" class="w-full rounded-xl bg-white/5 border border-white/10 text-white
+            <label class="block text-sm mb-1" data-i18n="form.email">Courriel</label>
+            <input type="email" name="email" required
+              class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                     focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1" data-i18n="form.phone">Téléphone</label>
+            <input name="phone"
+              class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                     focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" data-i18n="form.address">Adresse de l’établissement</label>
+          <input name="address"
+            class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" data-i18n="form.type">Type d’établissement</label>
+          <select name="business_type"
+                  class="select-dark w-full rounded-xl bg-white/5 border border-white/10 text-white
                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2">
-              <option data-i18n="form.type.1">Bar / Café / Restaurant</option>
-              <option data-i18n="form.type.2">Centre commercial / Boutique</option>
-              <option data-i18n="form.type.3">Université / Cégep / Bibliothèque</option>
-              <option data-i18n="form.type.4">Salle d’attente / Clinique</option>
-              <option data-i18n="form.type.5">Autre</option>
-            </select>
-          </div>
+            <option data-i18n="form.type.1">Bar / Café / Restaurant</option>
+            <option data-i18n="form.type.2">Centre commercial / Boutique</option>
+            <option data-i18n="form.type.3">Université / Cégep / Bibliothèque</option>
+            <option data-i18n="form.type.4">Salle d’attente / Clinique</option>
+            <option data-i18n="form.type.5">Autre</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm mb-1" data-i18n="form.msg">Message</label>
+          <textarea name="message" rows="4" data-i18n-placeholder="form.msg.ph"
+            placeholder="Heures d’ouverture, volume de passage, emplacement proposé, etc."
+            class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2"></textarea>
+        </div>
 
-          <div>
-            <label class="block text-sm mb-1" data-i18n="form.msg">Message</label>
-            <textarea name="message" rows="4" data-i18n-placeholder="form.msg.ph" placeholder="Heures d’ouverture, volume de passage, emplacement proposé, etc."
-                      class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
-                             focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2"></textarea>
-          </div>
+        <button type="submit"
+          class="mt-1.5 px-6 py-3 rounded-xl bg-[rgba(0,121,30,1)] text-white font-semibold
+                 transition-transform duration-200 hover:scale-110"
+          data-i18n="form.submit">
+          Envoyer la demande
+        </button>
 
-          <button type="submit" class="mt-1.5 px-6 py-3 rounded-xl bg-[rgba(0,121,30,1)] text-white font-semibold transition-transform duration-200 hover:scale-110" data-i18n="form.submit">
-            Envoyer la demande
-          </button>
-
-          <p class="text-[11px] text-slate-400 mt-2" data-i18n="form.disclaimer">
-            En soumettant ce formulaire, vous acceptez d’être contacté par Luvo Charging au sujet de votre demande.
-          </p>
-        </form>
-      </div>
+        <!-- Zone de message (succès / erreur) -->
+        <p id="form-msg" class="text-[11px] text-slate-400 mt-2" aria-live="polite" data-i18n="form.disclaimer">
+          En soumettant ce formulaire, vous acceptez d’être contacté par Luvo Charging au sujet de votre demande.
+        </p>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white/70">
-    <div class="container mx-auto px-4 py-8 text-sm text-slate-500 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-      <div>© <span id="y"></span> Luvo Charging. <span data-i18n="footer.rights">Tous droits réservés.</span></div>
-      <div class="flex gap-4">
-        <a href="#" onclick="alert('Ajoutez vos mentions légales');return false;" data-i18n="footer.legal">Mentions légales</a>
-        <a href="#" onclick="alert('Ajoutez votre politique de confidentialité');return false;" data-i18n="footer.privacy">Confidentialité</a>
-      </div>
+<!-- Script d'envoi AJAX Formspree -->
+<script>
+  (function() {
+    const form = document.getElementById('host-form');
+    const msg  = document.getElementById('form-msg');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      // état "envoi"
+      msg.className = 'text-[11px] mt-2 text-slate-400';
+      msg.textContent = 'Envoi…';
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true; btn.style.opacity = '.7';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          msg.className = 'text-[11px] mt-2 text-green-400';
+          msg.textContent = 'Merci ! Votre demande a bien été envoyée.';
+        } else {
+          msg.className = 'text-[11px] mt-2 text-amber-400';
+          msg.textContent = 'Impossible d’envoyer pour le moment. Réessayez plus tard.';
+        }
+      } catch (err) {
+        msg.className = 'text-[11px] mt-2 text-amber-400';
+        msg.textContent = 'Erreur réseau. Vérifiez votre connexion et réessayez.';
+      } finally {
+        btn.disabled = false; btn.style.opacity = '';
+      }
+    });
+  })();
+</script>
+
+
+<footer class="border-t border-slate-200 bg-white/70">
+  <div class="container mx-auto px-4 py-8 text-sm text-slate-500 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+    <div>© <span id="y"></span> Luvo Charging. Tous droits réservés.</div>
+    <div class="flex gap-4">
+    <a href="legal/mentions-legales.html">Mentions légales</a>
+    <a href="legal/politique-confidentialite.html">Confidentialité</a>
     </div>
-  </footer>
+  </div>
+</footer>
+
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
@@ -514,38 +594,81 @@ Site pour Luvo Charging
       }
     };
 
-    function applyLang(lang){
-      const dict = i18n[lang];
-      document.documentElement.lang = lang;
-      // Texte & HTML
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
-      });
-      // Placeholders
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-        const key = el.getAttribute('data-i18n-placeholder');
-        if(dict[key] !== undefined){ el.setAttribute('placeholder', el.getAttribute('data-i18n-placeholder-original') || dict[key]); el.placeholder = dict[key]; }
-      });
-      // Boutons actifs
-      document.getElementById('lang-fr').classList.toggle('lang-active', lang==='fr');
-      document.getElementById('lang-en').classList.toggle('lang-active', lang==='en');
-      // Recalcul pour format monétaire local
-      if (typeof compute === 'function') compute();
-    }
+    // Mise à jour visuelle des boutons FR/EN (desktop + mobile)
+  function highlightLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('lang-active', btn.dataset.lang === lang);
+    });
+  }
 
-    // Conserver le placeholder FR original pour retour éventuel
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-      el.setAttribute('data-i18n-placeholder-original', el.getAttribute('placeholder') || '');
+  // Applique une langue
+  function applyLang(lang){
+    const dict = i18n[lang] || i18n.fr;
+    document.documentElement.lang = lang;
+
+    // Texte & HTML
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
     });
 
-    // Listeners
-    document.getElementById('lang-fr').addEventListener('click', ()=>applyLang('fr'));
-    document.getElementById('lang-en').addEventListener('click', ()=>applyLang('en'));
+    // Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (!el.hasAttribute('data-i18n-placeholder-original')) {
+        el.setAttribute('data-i18n-placeholder-original', el.getAttribute('placeholder') || '');
+      }
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
 
-    // Init FR
-    applyLang('fr');
-  </script>
+    // Boutons actifs & persistance
+    highlightLang(lang);
+    try { localStorage.setItem('lang', lang); } catch(e){}
+
+    // Recalcul des montants (pour le format monétaire local)
+    if (typeof compute === 'function') compute();
+  }
+
+  // Branche tous les boutons .lang-btn (desktop + mobile)
+  function bindLangButtons() {
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>applyLang(btn.dataset.lang));
+    });
+  }
+
+  // --- Menu mobile
+  function bindMobileMenu(){
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (!menuBtn || !mobileNav) return;
+
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('overflow-hidden', open);
+    });
+
+    // Fermer le menu au clic sur un lien
+    mobileNav.querySelectorAll('.nav-link').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        mobileNav.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded','false');
+        document.body.classList.remove('overflow-hidden');
+      });
+    });
+  }
+
+  // --- Initialisation
+  (function init(){
+    bindLangButtons();
+    bindMobileMenu();
+
+    const saved = (()=>{
+      try { return localStorage.getItem('lang'); } catch(e){ return null; }
+    })();
+    applyLang(saved || 'fr');
+  })();
+</script>
 </body>
 </html>
 
