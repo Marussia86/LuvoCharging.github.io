@@ -1,2 +1,551 @@
 # LuvoCharging.github.io
 Site pour Luvo Charging
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">Luvo Charging – Stations de batteries portables pour commerces</title>
+  <meta name="description" content="Installez gratuitement une station de batteries portables dans votre commerce. Offrez la recharge mobile à vos clients et touchez une commission sur chaque location." data-i18n="meta.desc"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --brand:#0ea5e9; --header-h: 96px; }
+    html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; scroll-behavior: smooth; }
+    .container { max-width: 1120px; }
+    .glass { background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); }
+    .gradient { background: radial-gradient(1000px 600px at 10% 10%, rgba(14,165,233,.12), transparent), radial-gradient(800px 400px at 90% 20%, rgba(14,165,233,.18), transparent); }
+    .lang-btn{padding:.375rem .625rem;border-radius:.75rem;border:1px solid rgb(203 213 225);font-size:.875rem}
+    .lang-active{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    [id]{scroll-margin-top:var(--header-h);}
+    @media (min-width: 768px) { :root { --header-h: 112px; } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 gradient">
+  <!-- Header -->
+  <header style="background-color: rgba(255,255,255,1);" class="sticky top-0 z-50 shadow">
+    <div class="container mx-auto px-1 py-2 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <img src="assets/logo-luvo.jpg" alt="Logo de Luvo Charging" class="h-9 sm:h-10 md:h-12 lg:h-20 w-auto"/>
+      </div>
+
+      <!-- Menu mobile (optionnel) -->
+      <button class="md:hidden p-2 rounded-lg border border-slate-300" aria-label="Menu">☰</button>
+
+      <!-- Navigation + Lang -->
+      <nav class="relative hidden md:flex items-center gap-5 text-sm">
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"
+           class="relative px-3 py-2 text-slate-700 transition-colors group" aria-label="Accueil">
+          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+          <span class="relative z-10 group-hover:text-white" data-i18n="nav.home">Accueil</span>
+        </a>
+        <a href="#features" class="relative px-3 py-2 text-slate-700 transition-colors group">
+          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+          <span class="relative z-10 group-hover:text-white" data-i18n="nav.features">Avantages</span>
+        </a>
+        <a href="#how" class="relative px-3 py-2 text-slate-700 transition-colors group">
+          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+          <span class="relative z-10 group-hover:text-white" data-i18n="nav.how">Fonctionnement</span>
+        </a>
+        <a href="#pricing" class="relative px-3 py-2 text-slate-700 transition-colors group">
+          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+          <span class="relative z-10 group-hover:text-white" data-i18n="nav.pricing">Revenus</span>
+        </a>
+        <a href="#faq" class="relative px-3 py-2 text-slate-700 transition-colors group">
+          <span class="absolute -inset-1 rounded-xl bg-[rgba(0,121,30,1)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+          <span class="relative z-10 group-hover:text-white" data-i18n="nav.faq">FAQ</span>
+        </a>
+        <a href="#contact" class="relative px-3 py-2 rounded-xl bg-[rgba(0,121,30,1)] text-white hover:bg-[rgba(0,121,30,1)]" data-i18n="nav.cta">
+          Devenir hôte
+        </a>
+
+        <!-- Switch FR/EN -->
+        <div class="ml-3 flex gap-2">
+          <button id="lang-fr" class="lang-btn lang-active">FR</button>
+          <button id="lang-en" class="lang-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="container mx-auto px-4 pt-40 pb-40 flex items-center justify-center">
+    <div class="w-full max-w-3xl text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900" data-i18n="hero.title">
+        Installez gratuitement une <span style="color:rgba(0,121,30,1);">station de batteries</span> dans votre commerce
+      </h1>
+
+      <div class="flex justify-center gap-4 mt-6">
+        <span class="px-5 py-2 rounded-full bg-green-100 text-green-700 font-semibold text-lg shadow" style="border:1px solid rgba(0,0,0,0.08);" data-i18n="hero.badge">
+          Gratuit & Rémunérateur
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <!-- Recharge rapide -->
+        <div class="flex flex-col items-center gap-2 p-3 bg-[rgba(16,24,40,0.95)]/80 border border-[rgba(0,121,30,0.4)] rounded-lg backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <span class="text-sm font-medium text-white" data-i18n="hero.f1">Recharge rapide</span>
+        </div>
+        <!-- Sécurité -->
+        <div class="flex flex-col items-center gap-2 p-3 bg-[rgba(16,24,40,0.95)]/80 border border-[rgba(0,121,30,0.4)] rounded-lg backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+            <img width="22" height="22" src="assets/icone-cadenas.png" alt="Icône de cadenas"/>
+          </div>
+          <span class="text-sm font-medium text-white" data-i18n="hero.f2">Sécurité</span>
+        </div>
+        <!-- Utilisation simple -->
+        <div class="flex flex-col items-center gap-2 p-3 bg-[rgba(16,24,40,0.95)]/80 border border-[rgba(0,121,30,0.4)] rounded-lg backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          </div>
+          <span class="text-sm font-medium text-white" data-i18n="hero.f3">Utilisation simple</span>
+        </div>
+        <!-- Accès 24/7 -->
+        <div class="flex flex-col items-center gap-2 p-3 bg-[rgba(16,24,40,0.95)]/80 border border-[rgba(0,121,30,0.4)] rounded-lg backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <span class="text-sm font-medium text-white" data-i18n="hero.f4">Accès 24/7</span>
+        </div>
+      </div>
+
+      <p class="mt-8 text-2xl text-slate-600" data-i18n="hero.subtitle">
+        Luvo Charging met à votre disposition des stations de location de batteries portables, idéales pour les commerces et les événements. Offrez à vos clients la liberté de recharger leur téléphone à tout moment : louez, utilisez, et restituez simplement dans n’importe quelle station Luvo Charging — pratique, rapide et sans souci !
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href="#contact"
+           class="px-7 py-4 rounded-xl bg-[rgba(0,121,30,1)] text-white font-semibold text-lg transition-transform duration-200 hover:scale-110"
+           style="display:inline-block;"
+           data-i18n="hero.cta">
+          Demander l'installation
+        </a>
+      </div>
+
+      <div class="mt-8 flex flex-col md:flex-row items-center gap-6 text-lg text-slate-500 justify-center">
+        <div class="flex items-center gap-2" data-i18n="hero.support">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span> Support 7j/7
+        </div>
+        <div data-i18n="hero.install">Installation & maintenance <strong>100% prises en charge</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="container mx-auto px-4 py-10 scroll-mt-24">
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="p-8 bg-[rgba(16,24,40,0.95)]/90 rounded-2xl shadow-lg text-center text-white transition-transform duration-200 hover:scale-105">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold" data-i18n="features.1.t">Installation gratuite</h3>
+        <p class="mt-3 text-slate-100/90" data-i18n="features.1.d">Nous gérons la pose, la configuration et la maintenance. Aucun frais pour vous, jamais.</p>
+      </div>
+      <!-- Feature 2 -->
+      <div class="p-8 bg-[rgba(16,24,40,0.95)]/90 rounded-2xl shadow-lg text-center text-white transition-transform duration-200 hover:scale-105">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+          <img width="30" height="30" src="https://img.icons8.com/material-outlined/24/FFFFFF/us-dollar--v1.png" alt="icône dollar"/>
+        </div>
+        <h3 class="text-xl font-bold" data-i18n="features.2.t">Revenus additionnels</h3>
+        <p class="mt-3 text-slate-100/90" data-i18n="features.2.d">Touchez une commission fixe sur chaque location. Paiement mensuel clair et transparent.</p>
+      </div>
+      <!-- Feature 3 -->
+      <div class="p-8 bg-[rgba(16,24,40,0.95)]/90 rounded-2xl shadow-lg text-center text-white transition-transform duration-200 hover:scale-105">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="text-xl font-bold" data-i18n="features.3.t">Expérience client accrue</h3>
+        <p class="mt-3 text-slate-100/90" data-i18n="features.3.d">Vos clients restent plus longtemps, consomment davantage et repartent satisfaits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 étapes -->
+  <section id="how" class="px-4 pt-80 pb-80 scroll-mt-24">
+    <div class="max-w-6xl mx-auto rounded-[28px] border border-[rgba(0,121,30,0.35)]
+                bg-[radial-gradient(1200px_500px_at_10%_0%,rgba(0,121,30,0.10),transparent),linear-gradient(180deg,rgba(16,24,40,0.95),rgba(16,24,40,0.92))]
+                p-6 sm:p-8 md:p-12 text-center shadow-[0_10px_30px_rgba(0,0,0,.15)]">
+      <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-3">
+        <span style="color:#fff" data-i18n="how.title1">Devenez partenaire Luvo</span><br>
+        <span style="color:#fff" data-i18n="how.title2">en 3 étapes simples</span>
+      </h2>
+      <p class="max-w-2xl mx-auto text-slate-300/90" data-i18n="how.lead">
+        C’est rapide et facile. Suivez ces étapes pour déployer des stations de batteries dans votre établissement.
+      </p>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center shadow-md transition-transform duration-200 hover:scale-105">
+            <img width="48" height="48" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/new-post.png" alt="icône message"/>
+          </div>
+          <h3 class="mt-6 text-2xl font-extrabold text-white" data-i18n="how.s1.t">Étape 1 <br>Contactez-nous</h3>
+          <p class="mt-2 text-slate-300/90" data-i18n="how.s1.d">Formulaire ou courriel pour nous faire part de votre intérêt.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center shadow-md transition-transform duration-200 hover:scale-105">
+            <img width="48" height="48" src="https://img.icons8.com/glyph-neue/64/FFFFFF/handshake.png" alt="icône poignée de main"/>
+          </div>
+          <h3 class="mt-6 text-2xl font-extrabold text-white" data-i18n="how.s2.t">Étape 2 <br> Approbation</h3>
+          <p class="mt-2 text-slate-300/90" data-i18n="how.s2.d">Nous validons l’emplacement et confirmons les détails du partenariat.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 rounded-full bg-[rgba(0,121,30,1)] grid place-items-center shadow-md transition-transform duration-200 hover:scale-105">
+            <img width="64" height="64" src="assets/icone-prise.png" alt="icône prise électrique"/>
+          </div>
+          <h3 class="mt-6 text-2xl font-extrabold text-white" data-i18n="how.s3.t">Étape 3 <br> Installation & lancement</h3>
+          <p class="mt-2 text-slate-300/90" data-i18n="how.s3.d">Nous installons la station et vous commencez à générer des revenus.</p>
+        </div>
+      </div>
+
+      <p class="mt-10 text-sm">
+        <span class="text-amber-400 font-semibold" data-i18n="how.ready1">Prêt à démarrer ?</span>
+        <span class="text-slate-300/90" data-i18n="how.ready2">Remplissez le formulaire situé plus bas pour lancer votre partenariat avec Luvo.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Revenue Calculator (simple) -->
+  <section id="pricing" class="container mx-auto px-4 py-20 scroll-mt-24">
+    <div class="max-w-4xl mx-auto rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-6 md:p-8 shadow-lg border border-[rgba(0,121,30,0.35)]">
+      <h3 class="text-2xl md:text-3xl font-extrabold mb-2" data-i18n="calc.title">
+        Calculez vos <span class="text-[rgba(0,121,30,1)]">revenus</span>
+      </h3>
+      <p class="text-slate-300/90 mb-6" data-i18n="calc.lead">Estimation basée sur vos locations quotidiennes, le nombre de stations et l’option de parrainage.</p>
+
+      <label class="block text-sm mb-1">
+        <span data-i18n="calc.rpd">Locations par jour</span>
+        <span id="val-rpd" class="font-semibold text-[rgba(0,121,30,1)]">4</span>
+      </label>
+      <input id="rentsPerDay" type="range" min="0" max="12" value="4" step="1" class="w-full accent-[rgba(0,121,30,1)] mb-5">
+
+      <label class="block text-sm mb-1">
+        <span data-i18n="calc.sta">Nombre de stations</span>
+        <span id="val-sta" class="font-semibold text-[rgba(0,121,30,1)]">1</span>
+      </label>
+      <input id="stations" type="range" min="1" max="10" value="1" step="1" class="w-full accent-[rgba(0,121,30,1)] mb-5">
+
+      <label class="flex items-center gap-3 mb-6">
+        <input id="referral" type="checkbox" class="accent-[rgba(0,121,30,1)]">
+        <span data-i18n="calc.ref">Parrainage actif <span class="text-slate-300">( +0,25&nbsp;$ par location )</span></span>
+      </label>
+
+      <div class="rounded-xl border border-[rgba(0,121,30,0.35)] p-4 bg-white/5 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-300" data-i18n="calc.month">Revenu mensuel estimé</span>
+          <strong id="res-month" class="text-xl text-[rgba(0,121,30,1)]">0,00&nbsp;$</strong>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-300" data-i18n="calc.year">Revenu annuel estimé</span>
+          <strong id="res-year" class="text-xl text-[rgba(0,121,30,1)]">0,00&nbsp;$</strong>
+        </div>
+      </div>
+
+      <p class="mt-3 text-xs text-slate-400" data-i18n="calc.note">Mois de 30 jours, année de 365 jours. Estimation à titre indicatif.</p>
+    </div>
+  </section>
+
+  <script>
+    // Hypothèses calculateur
+    const PRICE_BASE = 1.00, BONUS_REF = 0.25, DAYS_MONTH = 30, DAYS_YEAR = 365;
+    const rpd = document.getElementById('rentsPerDay');
+    const sta = document.getElementById('stations');
+    const ref = document.getElementById('referral');
+    const outRpd = document.getElementById('val-rpd');
+    const outSta = document.getElementById('val-sta');
+    const outMonth = document.getElementById('res-month');
+    const outYear = document.getElementById('res-year');
+    function fmt(n){ return n.toLocaleString(document.documentElement.lang==='fr'?'fr-CA':'en-CA',{style:'currency',currency:'CAD',maximumFractionDigits:0}); }
+    function compute(){
+      const perDay = (+rpd.value) * (+sta.value) * (PRICE_BASE + (ref.checked?BONUS_REF:0));
+      outRpd.textContent = rpd.value; outSta.textContent = sta.value;
+      outMonth.innerHTML = fmt(perDay * DAYS_MONTH);
+      outYear.innerHTML  = fmt(perDay * DAYS_YEAR);
+    }
+    rpd.addEventListener('input', compute); sta.addEventListener('input', compute); ref.addEventListener('change', compute); compute();
+  </script>
+
+  <!-- FAQ -->
+  <section id="faq" class="container mx-auto px-4 pt-40 pb-40 scroll-mt-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl sm:text-4xl font-extrabold mb-8" style="color:rgba(16,24,40,0.95);" data-i18n="faq.title">
+        Foire aux questions
+      </h3>
+    </div>
+
+    <div class="mt-10 space-y-4">
+      <!-- Q1 -->
+      <details class="group rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-5 md:p-6 shadow-lg">
+        <summary class="flex items-center justify-between cursor-pointer select-none">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] items-center justify-center">
+              <img width="30" height="30" src="assets/icone-no-cash.png" alt="icône gratuit"/>
+            </span>
+            <span class="text-lg font-semibold" data-i18n="faq.q1.t">L’installation est-elle vraiment gratuite ?</span>
+          </div>
+          <svg class="w-5 h-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="mt-4 text-slate-300/90 leading-relaxed" data-i18n="faq.q1.d">
+          Oui. Aucun frais d’acquisition, d’installation ni de maintenance pour l’hôte. Nous prenons tout en charge.
+        </div>
+      </details>
+
+      <!-- Q2 -->
+      <details class="group rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-5 md:p-6 shadow-lg">
+        <summary class="flex items-center justify-between cursor-pointer select-none">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] items-center justify-center">
+              <img width="30" height="30" src="assets/icone-marteau.png" alt="icône outils"/>
+            </span>
+            <span class="text-lg font-semibold" data-i18n="faq.q2.t">Qui entretient la station ?</span>
+          </div>
+          <svg class="w-5 h-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="mt-4 text-slate-300/90 leading-relaxed" data-i18n="faq.q2.d">
+          Luvo Charging gère l’entretien, les mises à jour et le remplacement des batteries si nécessaire. Support 7j/7.
+        </div>
+      </details>
+
+      <!-- Q3 -->
+      <details class="group rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-5 md:p-6 shadow-lg">
+        <summary class="flex items-center justify-between cursor-pointer select-none">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] items-center justify-center">
+              <img width="30" height="30" src="assets/icone-commission.png" alt="icône commission"/>
+            </span>
+            <span class="text-lg font-semibold" data-i18n="faq.q3.t">Comment sont versées les commissions ?</span>
+          </div>
+          <svg class="w-5 h-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="mt-4 text-slate-300/90 leading-relaxed" data-i18n="faq.q3.d">
+          Un virement mensuel est effectué, accompagné d’un relevé détaillant toutes les locations et montants dus.
+        </div>
+      </details>
+
+      <!-- Q4 -->
+      <details class="group rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-5 md:p-6 shadow-lg">
+        <summary class="flex items-center justify-between cursor-pointer select-none">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex w-10 h-10 rounded-full bg-[rgba(0,121,30,1)] items-center justify-center">
+              <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            </span>
+            <span class="text-lg font-semibold" data-i18n="faq.q4.t">Peut-on déplacer la station ?</span>
+          </div>
+          <svg class="w-5 h-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="mt-4 text-slate-300/90 leading-relaxed" data-i18n="faq.q4.d">
+          Le déplacement nécessite l’accord écrit préalable de Luvo Charging afin d’assurer sécurité et suivi technique.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact / Devenir hôte (compact) -->
+  <section id="contact" class="container mx-auto px-4 mt-12 pb-20 scroll-mt-24">
+    <div class="max-w-xl mx-auto">
+      <div class="rounded-2xl bg-[rgba(16,24,40,0.95)] text-white p-6 md:p-7 shadow-lg border border-[rgba(0,121,30,0.35)]">
+        <h4 class="text-xl font-bold" data-i18n="contact.title">Devenir hôte</h4>
+        <p class="mt-1.5 text-slate-300/90 text-sm" data-i18n="contact.lead">Remplissez ce formulaire — réponse sous 24&nbsp;h ouvrables.</p>
+
+        <form class="mt-5 space-y-4" action="https://formspree.io/f/your-id" method="POST">
+          <div>
+            <label class="block text-sm mb-1" data-i18n="form.business">Nom de l’établissement</label>
+            <input name="business_name" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                       focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm mb-1" data-i18n="form.last">Nom</label>
+              <input name="last_name" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-sm mb-1" data-i18n="form.first">Prénom</label>
+              <input name="first_name" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm mb-1" data-i18n="form.email">Courriel</label>
+              <input type="email" name="email" required class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-sm mb-1" data-i18n="form.phone">Téléphone</label>
+              <input name="phone" class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                         focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm mb-1" data-i18n="form.address">Adresse de l’établissement</label>
+            <input name="address" class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                       focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2" />
+          </div>
+
+          <div>
+            <label class="block text-sm mb-1" data-i18n="form.type">Type d’établissement</label>
+            <select name="business_type" class="w-full rounded-xl bg-white/5 border border-white/10 text-white
+                        focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2">
+              <option data-i18n="form.type.1">Bar / Café / Restaurant</option>
+              <option data-i18n="form.type.2">Centre commercial / Boutique</option>
+              <option data-i18n="form.type.3">Université / Cégep / Bibliothèque</option>
+              <option data-i18n="form.type.4">Salle d’attente / Clinique</option>
+              <option data-i18n="form.type.5">Autre</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm mb-1" data-i18n="form.msg">Message</label>
+            <textarea name="message" rows="4" data-i18n-placeholder="form.msg.ph" placeholder="Heures d’ouverture, volume de passage, emplacement proposé, etc."
+                      class="w-full rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-400
+                             focus:outline-none focus:ring-2 focus:ring-[rgba(0,121,30,1)] focus:border-transparent px-3 py-2"></textarea>
+          </div>
+
+          <button type="submit" class="mt-1.5 px-6 py-3 rounded-xl bg-[rgba(0,121,30,1)] text-white font-semibold transition-transform duration-200 hover:scale-110" data-i18n="form.submit">
+            Envoyer la demande
+          </button>
+
+          <p class="text-[11px] text-slate-400 mt-2" data-i18n="form.disclaimer">
+            En soumettant ce formulaire, vous acceptez d’être contacté par Luvo Charging au sujet de votre demande.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white/70">
+    <div class="container mx-auto px-4 py-8 text-sm text-slate-500 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+      <div>© <span id="y"></span> Luvo Charging. <span data-i18n="footer.rights">Tous droits réservés.</span></div>
+      <div class="flex gap-4">
+        <a href="#" onclick="alert('Ajoutez vos mentions légales');return false;" data-i18n="footer.legal">Mentions légales</a>
+        <a href="#" onclick="alert('Ajoutez votre politique de confidentialité');return false;" data-i18n="footer.privacy">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const i18n = {
+      fr: {
+        'meta.title': 'Luvo Charging – Stations de batteries portables pour commerces',
+        'meta.desc': "Installez gratuitement une station de batteries portables dans votre commerce. Offrez la recharge mobile à vos clients et touchez une commission sur chaque location.",
+        'nav.home':'Accueil','nav.features':'Avantages','nav.how':'Fonctionnement','nav.pricing':'Revenus','nav.faq':'FAQ','nav.cta':'Devenir hôte',
+        'hero.title':'Installez gratuitement une <span style="color:rgba(0,121,30,1);">station de batteries</span> dans votre commerce',
+        'hero.badge':'Gratuit & Rémunérateur',
+        'hero.f1':'Recharge rapide','hero.f2':'Sécurité','hero.f3':'Utilisation simple','hero.f4':'Accès 24/7',
+        'hero.subtitle':"Luvo Charging met à votre disposition des stations de location de batteries portables, idéales pour les commerces et les événements. Offrez à vos clients la liberté de recharger leur téléphone à tout moment : louez, utilisez, et restituez simplement dans n’importe quelle station Luvo Charging — pratique, rapide et sans souci !",
+        'hero.cta':"Demander l'installation",
+        'hero.support':'<span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span> Support 7j/7',
+        'hero.install':'Installation & maintenance <strong>100% prises en charge</strong>',
+        'features.1.t':'Installation gratuite','features.1.d':'Nous gérons la pose, la configuration et la maintenance. Aucun frais pour vous, jamais.',
+        'features.2.t':'Revenus additionnels','features.2.d':'Touchez une commission fixe sur chaque location. Paiement mensuel clair et transparent.',
+        'features.3.t':'Expérience client accrue','features.3.d':'Vos clients restent plus longtemps, consomment davantage et repartent satisfaits.',
+        'how.title1':'Devenez partenaire Luvo','how.title2':'en 3 étapes simples','how.lead':"C’est rapide et facile. Suivez ces étapes pour déployer des stations de batteries dans votre établissement.",
+        'how.s1.t':'Étape 1 <br>Contactez-nous','how.s1.d':"Formulaire ou courriel pour nous faire part de votre intérêt.",
+        'how.s2.t':'Étape 2 <br> Approbation','how.s2.d':"Nous validons l’emplacement et confirmons les détails du partenariat.",
+        'how.s3.t':'Étape 3 <br> Installation & lancement','how.s3.d':"Nous installons la station et vous commencez à générer des revenus.",
+        'how.ready1':'Prêt à démarrer ?','how.ready2':'Remplissez le formulaire situé plus bas pour lancer votre partenariat avec Luvo.',
+        'calc.title':'Calculez vos <span class="text-[rgba(0,121,30,1)]">revenus</span>',
+        'calc.lead':"Estimation basée sur vos locations quotidiennes, le nombre de stations et l’option de parrainage.",
+        'calc.rpd':'Locations par jour','calc.sta':'Nombre de stations','calc.ref':'Parrainage actif <span class="text-slate-300">( +0,25&nbsp;$ par location )</span>',
+        'calc.month':'Revenu mensuel estimé','calc.year':'Revenu annuel estimé','calc.note':'Mois de 30 jours, année de 365 jours. Estimation à titre indicatif.',
+        'faq.title':'Foire aux questions',
+        'faq.q1.t':"L’installation est-elle vraiment gratuite ?", 'faq.q1.d':"Oui. Aucun frais d’acquisition, d’installation ni de maintenance pour l’hôte. Nous prenons tout en charge.",
+        'faq.q2.t':"Qui entretient la station ?", 'faq.q2.d':"Luvo Charging gère l’entretien, les mises à jour et le remplacement des batteries si nécessaire. Support 7j/7.",
+        'faq.q3.t':"Comment sont versées les commissions ?", 'faq.q3.d':"Un virement mensuel est effectué, accompagné d’un relevé détaillant toutes les locations et montants dus.",
+        'faq.q4.t':"Peut-on déplacer la station ?", 'faq.q4.d':"Le déplacement nécessite l’accord écrit préalable de Luvo Charging afin d’assurer sécurité et suivi technique.",
+        'contact.title':'Devenir hôte','contact.lead':"Remplissez ce formulaire — réponse sous 24&nbsp;h ouvrables.",
+        'form.business':"Nom de l’établissement",'form.last':"Nom",'form.first':"Prénom",'form.email':"Courriel",'form.phone':"Téléphone",'form.address':"Adresse de l’établissement",
+        'form.type':"Type d’établissement",'form.type.1':"Bar / Café / Restaurant",'form.type.2':"Centre commercial / Boutique",'form.type.3':"Université / Cégep / Bibliothèque",'form.type.4':"Salle d’attente / Clinique",'form.type.5':"Autre",
+        'form.msg':"Message",'form.msg.ph':"Heures d’ouverture, volume de passage, emplacement proposé, etc.",'form.submit':"Envoyer la demande",
+        'form.disclaimer':"En soumettant ce formulaire, vous acceptez d’être contacté par Luvo Charging au sujet de votre demande.",
+        'footer.rights':"Tous droits réservés.",'footer.legal':"Mentions légales",'footer.privacy':"Confidentialité"
+      },
+      en: {
+        'meta.title': 'Luvo Charging – Portable power bank stations for venues',
+        'meta.desc': "Install a portable power bank station in your venue. Offer mobile charging to your customers and earn a payout on each rental.",
+        'nav.home':'Home','nav.features':'Benefits','nav.how':'How it works','nav.pricing':'Revenue','nav.faq':'FAQ','nav.cta':'Become a host',
+        'hero.title':'Install a <span style="color:rgba(0,121,30,1);">power bank station</span> in your venue',
+        'hero.badge':'Free & Revenue-generating',
+        'hero.f1':'Fast charging','hero.f2':'Security','hero.f3':'Simple to use','hero.f4':'24/7 access',
+        'hero.subtitle':"Luvo Charging provides portable power bank rental stations, ideal for venues and events. Give your customers the freedom to charge anytime: rent, use, and return at any Luvo station — convenient, fast and hassle-free!",
+        'hero.cta':"Request installation",
+        'hero.support':'<span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span> 7-day support',
+        'hero.install':'Installation & maintenance <strong>fully covered</strong>',
+        'features.1.t':'Free installation','features.1.d':'We handle setup, configuration and maintenance. No cost to you, ever.',
+        'features.2.t':'Additional revenue','features.2.d':'Earn a fixed payout on each rental. Clear, transparent monthly payments.',
+        'features.3.t':'Better guest experience','features.3.d':'Guests stay longer, spend more and leave fully charged.',
+        'how.title1':'Become a Luvo partner','how.title2':'in 3 simple steps','how.lead':"It’s quick and easy. Follow these steps to deploy stations at your venue.",
+        'how.s1.t':'Step 1 <br>Contact us','how.s1.d':"Use the form or email us to express your interest.",
+        'how.s2.t':'Step 2 <br> Approval','how.s2.d':"We validate the location and confirm partnership details.",
+        'how.s3.t':'Step 3 <br> Install & launch','how.s3.d':"We install the station and you start earning revenue.",
+        'how.ready1':'Ready to start?','how.ready2':'Fill out the form below to launch your partnership with Luvo.',
+        'calc.title':'Estimate your <span class="text-[rgba(0,121,30,1)]">revenue</span>',
+        'calc.lead':"Estimate based on daily rentals, number of stations and the referral option.",
+        'calc.rpd':'Rentals per day','calc.sta':'Number of stations','calc.ref':'Active referral <span class="text-slate-300">( +$0.25 per rental )</span>',
+        'calc.month':'Estimated monthly revenue','calc.year':'Estimated yearly revenue','calc.note':'Month = 30 days, year = 365 days. For estimation purposes only.',
+        'faq.title':'Frequently asked questions',
+        'faq.q1.t':"Is installation really free?", 'faq.q1.d':"Yes. No acquisition, installation or maintenance fees for the host. We handle everything.",
+        'faq.q2.t':"Who maintains the station?", 'faq.q2.d':"Luvo Charging handles maintenance, updates and battery replacement if needed. 7-day support.",
+        'faq.q3.t':"How are payouts sent?", 'faq.q3.d':"Monthly transfer, with a statement listing all rentals and amounts due.",
+        'faq.q4.t':"Can we move the station?", 'faq.q4.d':"Any move requires Luvo Charging’s prior written consent to ensure safety and technical tracking.",
+        'contact.title':'Become a host','contact.lead':"Fill out the form — we’ll reply within 1 business day.",
+        'form.business':"Business name",'form.last':"Last name",'form.first':"First name",'form.email':"Email",'form.phone':"Phone",'form.address':"Business address",
+        'form.type':"Business type",'form.type.1':"Bar / Café / Restaurant",'form.type.2':"Mall / Retail",'form.type.3':"University / College / Library",'form.type.4':"Waiting room / Clinic",'form.type.5':"Other",
+        'form.msg':"Message",'form.msg.ph':"Opening hours, foot traffic, proposed location, etc.",'form.submit':"Send request",
+        'form.disclaimer':"By submitting this form, you agree to be contacted by Luvo Charging regarding your request.",
+        'footer.rights':"All rights reserved.",'footer.legal':"Legal",'footer.privacy':"Privacy"
+      }
+    };
+
+    function applyLang(lang){
+      const dict = i18n[lang];
+      document.documentElement.lang = lang;
+      // Texte & HTML
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+      });
+      // Placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+        const key = el.getAttribute('data-i18n-placeholder');
+        if(dict[key] !== undefined){ el.setAttribute('placeholder', el.getAttribute('data-i18n-placeholder-original') || dict[key]); el.placeholder = dict[key]; }
+      });
+      // Boutons actifs
+      document.getElementById('lang-fr').classList.toggle('lang-active', lang==='fr');
+      document.getElementById('lang-en').classList.toggle('lang-active', lang==='en');
+      // Recalcul pour format monétaire local
+      if (typeof compute === 'function') compute();
+    }
+
+    // Conserver le placeholder FR original pour retour éventuel
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      el.setAttribute('data-i18n-placeholder-original', el.getAttribute('placeholder') || '');
+    });
+
+    // Listeners
+    document.getElementById('lang-fr').addEventListener('click', ()=>applyLang('fr'));
+    document.getElementById('lang-en').addEventListener('click', ()=>applyLang('en'));
+
+    // Init FR
+    applyLang('fr');
+  </script>
+</body>
+</html>
+
