@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mentions légales – Luvo Charging</title>
+  <meta name="description" content="Mentions légales du site Luvo Charging." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; }
+    :root { --brand: rgba(0,121,30,1); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Header simple -->
+  <header class="border-b bg-white">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/index.html" class="inline-flex items-center gap-2 text-sm hover:opacity-80">
+        <span class="inline-block w-2.5 h-2.5 rounded-full" style="background:var(--brand)"></span>
+        Retour au site
+      </a>
+      <strong class="text-slate-700">Mentions légales</strong>
+    </div>
+  </header>
+
+  <!-- Contenu -->
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Mentions légales</h1>
+    <p class="mt-2 text-sm text-slate-500">Dernière mise à jour : <span id="lastUpdated"></span></p>
+
+    <section class="mt-8 space-y-6">
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Éditeur du site</h2>
+        <p class="mt-2">Luvo Charging<br>
+          1109-185 Millway Avenue, Vaughan, Ontario, L4K 0L2<br>
+          Courriel : <a href="mailto:contact@luvocharging.com" class="text-slate-700 underline">contact@luvocharging.com</a><br>
+          Directeur de publication : [à compléter]
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Hébergement</h2>
+        <p class="mt-2">Ce site est hébergé par : [Nom de l’hébergeur : Netlify / Vercel / Autre]<br>
+          Adresse : [Adresse de l’hébergeur]<br>
+          Site : [URL de l’hébergeur]
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Propriété intellectuelle</h2>
+        <p class="mt-2">L’ensemble des contenus présents sur ce site (textes, visuels, logos, éléments graphiques, mises en page)
+          est protégé par le droit d’auteur et demeure la propriété de Luvo Charging, sauf mention contraire.
+          Toute reproduction, diffusion, modification ou exploitation, totale ou partielle, sans autorisation préalable est interdite.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Conditions d’utilisation</h2>
+        <p class="mt-2">L’utilisation de ce site implique l’acceptation pleine et entière des présentes mentions légales.
+          Luvo Charging se réserve le droit de les modifier à tout moment ; les utilisateurs sont invités à les consulter régulièrement.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Limitation de responsabilité</h2>
+        <p class="mt-2">Les informations diffusées sont fournies à titre indicatif. Malgré nos efforts pour maintenir un contenu exact
+          et à jour, Luvo Charging ne saurait être tenue responsable des erreurs, omissions ou indisponibilités temporaires.
+          Les liens externes, le cas échéant, sont fournis à titre pratique ; Luvo Charging n’exerce aucun contrôle sur leur contenu.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Droit applicable</h2>
+        <p class="mt-2">Ces mentions sont régies par les lois en vigueur au Québec et au Canada. En cas de litige,
+          et à défaut de résolution amiable, compétence est attribuée aux tribunaux du district judiciaire compétent.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold" style="color:var(--brand)">Contact</h2>
+        <p class="mt-2">Pour toute question, contactez-nous à
+          <a href="mailto:contact@luvocharging.com" class="text-slate-700 underline">contact@luvocharging.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t bg-white">
+    <div class="max-w-5xl mx-auto px-4 py-6 text-sm text-slate-500 flex items-center justify-between">
+      <div>© <span id="y"></span> Luvo Charging</div>
+      <div class="flex gap-4">
+        <a href="/legal/mentions-legales.html" class="hover:underline">Mentions légales</a>
+        <a href="/legal/politique-confidentialite.html" class="hover:underline">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Mets une date fixe si tu préfères : "24 août 2025"
+    document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('fr-CA', { year:'numeric', month:'long', day:'numeric' });
+  </script>
+</body>
+</html>
